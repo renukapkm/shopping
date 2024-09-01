@@ -1,0 +1,74 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+about page
+{% endblock %}
+{% block content %}
+
+<div class="about-section">
+    <h1>About Us </h1>
+    <p>shares their journey, mission, and values.</p>
+    <p>“Our brand: A journey of passion, quality, and innovation. Explore our story, values, and achievements—all in one place.”</p>
+  </div>
+  
+  <h2 style="text-align:center">Our Team</h2>
+  <div class="row">
+    <div class="column">
+      <div class="abou text-center">
+        <img src="/static/im1.jpg" alt="Jane" style="width:50%">
+        <div class="container">
+          <h2>Jane Doe</h2>
+          <p class="title">CEO & Founder</p>
+          <p> SHOPPING SPOT was founded by Jane Doe , a visionary entrepreneur passionate about Eco-Friendly Personal Care Products. “Our mission is to make shopping convenient, enjoyable, and accessible for everyone.”</p><br><br>
+          <p>jane@shoppingspot.com</p>
+          <a href="/contact"><p><button class="button">Contact</button></p></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="column">
+      <div class=" abou text-center">
+        <!-- <div></div> -->
+        <img src="/static/im2.jpg" class="" alt="Mike" style="width:50%">
+        <div class="container">
+          <h2>Amy Osburn</h2>
+          <p class="title">Art Director</p>
+          <p>Amy Osburn, a respected art director, brings her expertise in fashion, beauty, and lifestyle to our team. With an eye for aesthetics and a passion for creativity, Amy ensures that our website reflects elegance, functionality, and visual appeal.</p><br>
+          <p>mike@shoppingspot.com</p>
+          <a href="/contact"><p><button class="button">Contact</button></p></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="column">
+      <div class="abou text-center">
+        <img src="/static/im3.jpg" alt="John" style="width:50%">
+        <div class="container">
+          <h2>Alex</h2>
+          <p class="title">Designer</p>
+          <p>“Say hello to Alex, our design curator. Alex believes that beauty lies in simplicity. From minimalist logos to captivating product images, Alex’s eye for detail ensures our brand stands out. When not obsessing over pixels, Alex enjoys exploring art galleries and seeking inspiration in everyday life.”</p>
+          <p>john@shoppingspot.com</p>
+          <a href="/contact"><p><button class="button">Contact</button></p></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <section class="about">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <img src="{% static 'abou.jpg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <h1>ABOUT US</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero in, voluptas porro animi maiores similique minima. Quae, dicta. Non, ex porro! Facilis minima sint exercitationem molestias deserunt similique ea consectetur?</p>
+
+            </div>
+        </div>
+    </div>
+</section> -->
+
+{% include 'footer.html' %}
+{% endblock %}

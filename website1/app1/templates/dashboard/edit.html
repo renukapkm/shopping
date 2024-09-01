@@ -1,0 +1,50 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+product list page
+{% endblock %}
+{% block content %}
+      <section class="sec2">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <div class="editbox " >
+                        <h1 class="demo"> edit product </h1>
+    <!-- <h1>{{ w.pro_name }}</h1> -->
+    <form action="/edit/{{w.id}}" method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">product name:</label>
+        
+
+             <input type="text" class="form-control" id="" placeholder="" name="pro_name" value="{{w.pro_name }}">
+             
+            <!-- <textarea class="form-control" rows="2" id="comment" name="text"> {{ w.pro_name }}</textarea> -->
+
+           
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="price">product price</label>
+            
+        <input type="number" class="form-control" id="price" name="pro_price" placeholder="product price" value="{{w.pro_price }}">
+    
+        </div>
+        
+        <div class="mb-3 mt-3">
+            <img src="/media/{{w.pro_image}}" alt="" height="100px"><br>
+            <label for="email">product image</label>
+            
+        <input type="file" class="form-control" id="pro_image" name="pro_image" placeholder="product image" value="{{w.pro_image}}" >
+    
+        </div>
+        <div class="text-center">
+            <button type="submit " class=" btn btn-success">update</button>
+        </div>  
+    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+{% endblock %}

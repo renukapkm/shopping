@@ -1,0 +1,293 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+home page
+{% endblock %}
+{% block content %}
+
+<!-- menu -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <!-- {% for x in cat %} -->
+  <a href="/product?catid={{x.id}}">{{x.cate_name}}</a>
+  <!-- <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a> -->
+  <!-- {% endfor %}  -->
+</div>
+
+<span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9776; Explore category.</span>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+    
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: -webkit-linear-gradient( right,#556fd7, #d47333);
+  /* -webkit-background-clip:content-box;
+  -webkit-text-fill-color: transparent; */
+    /* background-color: #111; */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    /* color: #818181; */
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    /* color: #f1f1f1; */
+    color: #d47333;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  </style>
+
+   <!-- SLIDER  -->
+
+<style>
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    } 
+
+    swiper-container {
+      width: 100%;
+      min-height: 300px; 
+      /* margin-bottom: 25px; */
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 450px; /* Adjust the height as needed */
+      margin-right: 15px !important; /* Decrease the margin-right */
+    }
+
+    swiper-slide img {
+      display: block;
+       width: 100%; 
+      height: 100%;
+      object-position:center;
+      object-fit: cover;
+    }
+</style>
+<!-- home background image  -->
+
+  
+<img src="{% static 'What.jpeg' %}" alt="" width="100%" height="500px" >
+
+
+<!-- slider of atomatic  -->
+
+<!-- category_slider.html -->
+<!-- 
+<div id="categorySlider" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+      {% for category in categories %}
+      {% if forloop.counter0|divisibleby:4 %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="row">
+              {% endif %}
+              <div class="col-md-3">
+                  <div class="category-item">
+                      <h3>{{ cate_name }}</h3>
+                       Add other category fields here as needed -->
+                  <!-- </div>
+              </div>
+              {% if forloop.counter|divisibleby:4 or forloop.last %}
+          </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#categorySlider" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#categorySlider" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+  </a>
+</div> --> 
+
+
+<!-- <swiper-container class="mySwiper" init="false">
+  {% for x in cat %}
+     <swiper-slide><img src="{% static 'slide1.jpg' %}" alt=""></swiper-slide> --> 
+  <!-- <swiper-slide><img src="/media/{{ x.cate_image }}" alt=""></swiper-slide> -->
+
+    <!-- <swiper-slide>Slide 3</swiper-slide>
+    <swiper-slide>Slide 4</swiper-slide>
+    <swiper-slide>Slide 5</swiper-slide>
+    <swiper-slide>Slide 6</swiper-slide>
+    <swiper-slide>Slide 7</swiper-slide>
+    <swiper-slide>Slide 8</swiper-slide>
+    <swiper-slide>Slide 9</swiper-slide> -->
+  <!-- {% endfor %} -->
+  <!-- </swiper-container> -->
+  
+  <!-- <script src="{% static 'swiper-element-bundle.min.js' %}"></script>  -->
+
+  <!-- <script>
+    const swiperEl = document.querySelector('swiper-container')
+    Object.assign(swiperEl, {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      },
+    });
+    swiperEl.initialize();
+  </script> -->
+<!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis excepturi nemo neque cupiditate blanditiis vitae dignissimos quas porro reprehenderit quo saepe pariatur, ex illo at adipisci molestias ratione quasi molestiae?</p> -->
+
+<section class="cat1">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="inbox12">
+          <style>
+            * {
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+            }
+        
+            .slider-container {
+              width: 100%;
+              overflow: hidden;
+              position: relative;
+              margin: 20px 0;
+              
+            }
+        
+            .slider-wrapper {
+              display: flex;
+              transition: transform 0.5s ease;
+            }
+        
+            .slide {
+              flex: 0 0 16.666%; /* Each category takes up 1/6th (16.666%) of the container width */
+              padding: 0 10px;
+            }
+        
+            .slide img {
+              /* max-width: 100%;
+              height: auto; */
+              display: block;
+              margin: 0 auto;
+            }
+          </style>
+        </head>
+        <body>
+         
+          
+        
+        <div class="slider-container">
+          <div class="slider-wrapper">
+            <!-- Category slides -->
+            {% for x in pro %}
+            <div class="slide">
+              <img src="/media/{{ x.pro_image }}" alt="Category 1" height="300px">
+              <p class="h6  text-center text-dark">{{ x.pro_name }}</p>
+             </div>
+            {% endfor %}
+
+            <!-- Add more categories as needed -->
+          </div>
+        </div>
+        
+        <script>
+          // Automatic slider functionality
+          const sliderWrapper = document.querySelector('.slider-wrapper');
+          let slideIndex = 0;
+          const slides = document.querySelectorAll('.slide');
+          const totalSlides = slides.length;
+          const slideWidth = slides[0].clientWidth + 20; // Assuming all slides have the same width and adding padding
+        
+          function nextSlide() {
+            slideIndex++;
+            if (slideIndex > totalSlides - 6) {
+              slideIndex = 0;
+            }
+            sliderWrapper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+          }
+        
+          setInterval(nextSlide, 3000); // Change slide every 3 seconds (adjust as needed)
+        </script>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>  
+
+
+  {% include 'footer.html' %}
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+{% endblock %}

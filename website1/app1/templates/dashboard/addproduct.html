@@ -1,0 +1,61 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+Add product page
+{% endblock %}
+{% block content %}
+<section class="sec1">
+    <div class="container mt-3 ">
+        <div class="row  mx-auto justify-content-center">
+            <div class="col-lg-4 col-md-4 col-12 ">
+                
+
+          
+       <h1>Add Products</h1>
+    <form action="/addproduct"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3 mt-3">
+            <label for="username">pdoduct name</label>
+            
+        <input type="text" class="form-control" id="usrname" name="pro_name" placeholder="product name">
+    
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="price">product price</label>
+            
+        <input type="number" class="form-control" id="price" name="pro_price" placeholder="product price">
+    
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="sel1" class="form-label">product category:</label>
+            <select class="form-select" id="cat" name="cat">
+                {% for x in catt %}
+                <option value="{{ x.id }}"> 
+                    {{ x.cate_name }}
+                </option>
+                {% endfor %}  
+              </select>  
+               
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="email">product image</label>
+            
+        <input type="file" class="form-control" id="pro_image" name="pro_image" placeholder="product image">
+    
+        </div>
+        
+       
+    
+        
+         <button type="submit" class="btn btn-primary">submit</button>
+       </form>
+      </div>
+   </div>
+
+    </div>
+    </section>
+    
+    
+    {% endblock %}

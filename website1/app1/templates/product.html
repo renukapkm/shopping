@@ -1,0 +1,144 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+product  page
+{% endblock %}
+{% block content %}
+
+<!-- menu -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    {% for x in cat %}
+    <a href="/product?catid={{x.id}}">{{x.cate_name}}</a>
+    <!-- <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a> -->
+    {% endfor %} 
+  </div>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; CATEGORIES</span>
+
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+      
+    }
+    
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background: -webkit-linear-gradient( right,#556fd7, #d47333);
+    /* -webkit-background-clip:content-box;
+    -webkit-text-fill-color: transparent; */
+      /* background-color: #111; */
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      /* color: #818181; */
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+      /* color: #f1f1f1; */
+      color: #d47333;
+    }
+    
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    </style>
+
+
+
+  
+ <section id="product">
+    <div class="container-fluid">
+        <h1 class="text-center my-5">OUR PRODUCTS</h1>
+       
+        <div class="row">
+            {% for x in pro %}
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                <div class="card" >
+                    <img src="/media/{{x.pro_image}}"  class="card-img-top" alt="Card image">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">{{x.pro_name}}</h4>
+                      <p class="card-text">{{x.pro_price }}</p>
+                      <a href="/addtocart/{{x.id}}" class="btn btn-primary">Add to cart</a>
+                      <a href="/addtowish/{{x.id}}" class="btn btn-primary">Wishlist</a>
+
+                    </div>
+                  </div>
+
+            </div>
+        {% endfor %}   
+        </div>
+        
+    </div>
+
+</section>
+<!-- <section class="sec2">
+    <div class="container mt-3">
+    <div class="row">
+        <h2 class="pro1">PRODUCTS</h2> <br><br><br>
+        {% for x in pro %}
+        <div class="col-sm-3 my-3">
+            <div class="card" >
+                <img class="card-img-top" src="/media/{{x.pro_image}}" alt="Card image" width="100%" >
+                <div class="card-body">
+                  <h4 class="card-title">{{x.pro_name}}</h4>
+                  <p class="card-text">{{x.pro_price }}</p>
+                  
+                </div>
+                <a href="/addtocart/{{x.id}}" class="btn btn-primary">Add to cart</a>
+              </div> -->
+        <!-- <div class="inbox1">
+            <img src="/media/{{x.pro_image}}" alt="" width="200px" height="250px">
+
+
+            <div class="span">
+                <span>{{x.pro_name}}</span>
+            </div>
+            <div class="span">
+                <span>{{x.pro_price }}</span>
+            </div>
+
+        </div> -->
+        
+    <!-- </div>    
+    {% endfor %} 
+    </div>
+    </div>
+    </section> -->
+    {% include 'footer.html' %}
+{% endblock %}
+

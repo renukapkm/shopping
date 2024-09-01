@@ -1,0 +1,35 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+dash registration page
+{% endblock %}
+{% block content %}
+<h1 class="demo">dashregistration</h1>
+<table class="table  table-bordered  w-50   mx-auto">
+    <thead>
+        <tr>
+            
+            <th>email</th>
+            <th>password</th>
+            <th>name</th>
+            <th>phonenumber</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in dashregistration %}
+        <tr>
+            <td>{{x.reg_email }}</td>
+            <td>{{ x.reg_password }}</td>
+            <td>{{ x.reg_username }}</td>
+            <td>{{ x.reg_phnum }}</td>
+
+
+
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

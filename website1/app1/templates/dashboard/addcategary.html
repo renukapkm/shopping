@@ -1,0 +1,66 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+Add categary page
+{% endblock %}
+{% block content %}
+
+
+<div class="addcate">
+    <div class="container-fluid">
+        <h1>ADD CATEGORY</h1>
+        <div class="row mx-auto ">
+            <div class="col-lg-6 col-md-6 col-12 mx-auto">
+                <form action="/addcategary"  method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+            
+                    <div class="mb-3 mt-3">
+                        <label for="username">categary  name</label>
+                        
+                    <input type="text" class="form-control" id="usrname" name="cate_name" placeholder="categary name">
+                
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="email">categary image</label>
+                        
+                    <input type="file" class="form-control" id="pro_image" name="cate_image" placeholder="categary image">
+                
+                    </div>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <section class="sec1">
+    <div class="container mt-3">
+    <h2>Add categary</h2>
+    <form action="/addcategary"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3 mt-3">
+            <label for="username">categary  name</label>
+            
+        <input type="text" class="form-control" id="usrname" name="cate_name" placeholder="categary name">
+    
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="email">categary image</label>
+            
+        <input type="file" class="form-control" id="pro_image" name="cate_image" placeholder="categary image">
+    
+        </div>
+        
+        
+       
+    
+        
+         <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+    </div>
+    </section>
+    
+     -->
+    {% endblock %}

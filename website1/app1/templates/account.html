@@ -1,0 +1,300 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+Account page
+{% endblock %}
+{% block content %}
+<style>
+    /* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 250px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+  margin-left: 250px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="boxx">
+                    
+                    <div id="mySidenav" class="sidenav">
+                        {% for x in acc %}
+                        <div class="acc text-center"> 
+                            
+                             {% if x.reg_img == '' %}
+                             <img src="{%  static 'avatar.png' %}" alt="" height="100px" style="border-radius: 50%;">
+                            {% else %}
+                            <img src="/media/{{x.reg_img}}" alt="" height="100px"  style="border-radius: 50%;">
+                            {% endif %}
+            
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <h5 class="text-light">{{ x.reg_name}}</h5>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="/account?home"><i class="bi7 bi-house-fill">Home</i></a>
+                        <a href="/account?pro=prof"> <i class="bi1 bi-person-fill"></i>Profile</a>
+                        <a href="/account?ord=order"><i class="bi2 bi-basket2-fill"></i>Order</a>
+                        <a href="/account?wish=wishlist"><i class="bi3 bi-bag-heart-fill"></i>Wish</a>
+                        <a href="/account?noti=notification"> <i class="bi4 bi-bell-fill"></i>Noti</a>
+                        <a href="/account?help=helper"><i class="bi5 bi-question-circle-fill"></i>Help</a>
+                        <!-- <a href="#">Contact</a> -->
+                      </div>
+                      {% endfor %}
+                      <!-- Use any element to open the sidenav -->
+                      <span onclick="openNav()">&#9776; open</span>
+                      
+                      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+                      <div id="main">
+                        
+                        <div class="acc">   
+                            <h4 class="text-center">Account information</h4> 
+                            {% if 'ord' in request.GET %} 
+                            <table class="table table-borded align-middle  text-center ">
+                             <thead>
+                                 <th>image</th>
+                                 <th>Name</th>
+                                 <th>Qty</th>
+                                 <th>price</th>
+                             </thead>
+                             <tbody>
+                                 {% if ordercount == 0 %}
+                                 <tr>
+                                     <td colspan="4">No orders found</td>
+                                 </tr>
+                                 {% else %}
+                                 {% for x in order %}
+                                 <tr>
+                                     <td><img src="/media/{{x.order_image}}" alt="" width="100px"></td>
+                                     <td>{{x.order_name}} </td>
+                                     <td>{{x.order_qty}}</td>
+                                     <td>{{x.order_price}}</td>
+                                 </tr>
+                                 {% endfor %}
+                                 {% endif %}
+                             </tbody>
+                            </table>
+                            
+                             
+                             
+                             {% endif %}
+                            {% if 'pro' in request.GET %}
+                            <form action="/account" method="post" enctype="multipart/form-data">
+                             {% csrf_token %}
+             
+                             {% for x in pro %}
+                             <div class="acc text-center">
+                                 <img src="/media/{{x.reg_img}}" alt="" height="100px"  style="border-radius: 50%;"> 
+                                
+                            </div>
+                             <div class="mb-3 mt-3">
+                                 <label for="image">profile pic</label>
+                                 <input type="file" class="form-control" value="{{x.reg_img}}" name="profile_img" placeholder="choose your pic" id="image">
+                             </div>
+                             <div class="mb-3 mt-3">
+                                 <label for="name">Name</label>
+                                 <input type="name" class="form-control" value="{{x.reg_name}}" name="profile_name" placeholder="enter your name" id="name" >
+                             </div>
+                             <div class="mb-3 mt-3">
+                                 <label for="name">Email</label>
+                                 <input type="email" class="form-control" value="{{x.reg_email}}" name="profile_email" placeholder="enter your email" id="email">
+                             </div> 
+                             <div class="mb-3 mt-3">
+                                 <label for="name">password</label>
+                                 <input type="password" class="form-control" value="{{x.reg_password}}" name="profile_password" placeholder="enter your password" id="password">
+                             </div> 
+             
+                              <button type="submit" class="btn btn-primary">submit</button>
+                            </form>
+                            {% endfor %}
+                            {% endif %}
+             
+             
+                            
+                                 {% if 'wish' in request.GET %}
+                                      {% if wishorder == 0 %}
+                                     <h4 class="text-center p-5 display-6">No wishorder found</h4>
+                                     
+                                 {% else %}
+                                 {% for x in wish %}
+                                 <div class="row">
+                                    <div class="col-sm-9">
+                                 <div class="row my-2">
+                                     <div class="col-sm-3">
+                                         <div class="cartimg">
+                                             <img src="/media/{{x.wish_image}}" alt="" height="150px">
+                                         </div>
+                                     </div>
+                                     <div class="col-sm-3">
+                                         <div class="span1  wishclass">
+                                            <div>{{x.wish_name}}</div> 
+                                         </div>
+                                     </div>
+                                     <div class="col-sm-3">
+                                         <div class="span1 wishclass">
+                                             <div>{{x.wish_price}}</div>  
+                                         </div>
+                                     </div>
+                                     <div class="col-sm-3">
+                                         <div class="span1 wishclass">
+                                             <a href="/addtocart/{{x.wish_proid}}" class="btn btn-primary ">Add to cart</a>
+                                         </div>
+                                     </div>
+             
+                                 </div>
+                                </div>
+                                </div>
+                                 {% endfor %}
+                                 {% endif %}
+                                 {% endif %}
+                                 {% if 'noti' in request.GET %}
+                                 {% for x in noti %}
+                                 <div class="toast show mx-auto mt-4 ">
+                                     <div class="toast-header">
+                                       {{x.noti_date}}
+                                       <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                                     </div>
+             
+                                     <div class="toast-body">
+                                       {{x.noti_message}}
+                                     </div>
+                                   </div>
+                                 {% endfor %}
+                                 {% endif %}
+             
+             
+                                 {% if 'help' in request.GET %}
+                                 <section>
+                                    <h3  class="text-center">HELP CENTER</h3>
+                                    <p class="text-center"> HOW CAN I HELP YOU?</p>
+                                     <div class="container">
+  
+                                         <div class="row ">
+                                             <div class="col text-center">
+                                                <div class="bb">
+                                                    <h1> <i class="bi bi-geo-alt-fill"></i></h1>
+                                                <p>New York, NY 10012, US</p>
+                                                </div>
+                                                
+                                             </div>
+                                             <div class="col text-center">
+                                                <div class="bb">
+                                                    <h1> <i class="bi bi-envelope-fill"></i> </h1>
+                                                    <p> shoppingspot@gmail.com</p>
+                                                </div>
+                                               
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col text-center">
+                                                <div class="bb">
+                                                    <h1><i class="bi bi-telephone-plus-fill"></i></h1> 
+                                                    <p> 01 234 567 88</p>
+                                                </div>
+                                               
+                                             </div>
+                                             <div class="col text-center">
+                                                <div class="bb">
+                                                    <h1><i class="bi bi-printer"></i></h1> 
+                                               <p> 01 234 567 89</p> 
+                                                </div>
+                                               
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </section>
+                                 {% endif %}
+             
+             
+                                 
+                                 {% if 'home' in request.GET %}
+                                 <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="detail">
+                                                    <p class=" h5" style="color: #d47333 ;" >Welcome to your account dashboard! <br></p><br> <p> Here, you can easily manage all aspects of your shopping experience.  <br><br><b>Profile Overview:</b>  Update your personal information, including your name, email, and address, to ensure smooth transactions. <br><b> Order History:</b>  View and track your past orders, check delivery statuses, and access detailed invoices.  <br><b>Wishlist:</b> Manage your saved items and keep track of products you wish to purchase in the future. <br> <b> Shopping Cart: </b>Review the items currently in your cart, update quantities, or proceed to checkout. <br> <b>Help Center:</b> Access FAQs, contact support, and find solutions to any issues you may encounter. Stay connected and enjoy a personalized shopping experience!</p>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                                        
+                                 </section>
+                                 {% endif %}
+             
+                             
+             
+                         </div>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+</script>
+<!-- </section> -->
+{% endblock %}

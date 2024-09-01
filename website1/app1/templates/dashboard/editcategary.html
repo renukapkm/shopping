@@ -1,0 +1,40 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+categary page
+{% endblock %}
+{% block content %}
+<section class="sec3">
+    <div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <div class="inbox">
+                <h2 class="pro1">Edit CATEGORY</h2> <br>
+                    {% for x in category %}
+                 <form action="/editcategary/{{x.id}}" method="POST" enctype="multipart/form-data">
+                         {%csrf_token%}
+                         <div class="col">
+                            <label for="name" class="form-label">editcategary name:</label><br>
+                            <input type="text" class="form-control" id="" placeholder="" name="cate_name" value="{{x.cate_name }}"><br>
+                         </div>
+           
+                    <div class="col">
+                    <img src="/media/{{x.cate_image}}" alt="" height="100px"><br><br>
+                     <label for="email">categary image</label><br><br>
+            
+                     <input type="file" class="form-control" id="pro_image" name="cate_image" placeholder="categary image" value="{{x.cate_image}}" ><br><br>
+                     </div>  
+                    <div class="text-center">
+                     <button type="submit " class=" btn btn-success">update category</button>
+                    </div> 
+              </form>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+    
+{% endblock %}
+

@@ -1,0 +1,56 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %} checkout page {% endblock %}
+{% block content %}
+
+<!-- <section class="myorder">
+    <div class="container">
+        <h1 class="">MY ORDER</h1>
+        <div class="row">
+            {% for x in order %}
+            <div class="col">
+                <img src="/media/{{x.order_image}}" alt="">
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</section> -->
+
+
+
+
+ <h2 class="pro1">My order</h2> <br><br><br>
+<div class="conaineer">
+    <div class="row">
+        <div class="col-sm-12">
+        {% for x in order %}
+        <div class="row my-2">
+            <div class="col-sm-4">
+                <div class="inbox1">
+                    <img src="/media/{{x.order_image}}" height="100px" alt="">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="span1">
+                    <span>{{ x.order_name}}</span>
+                </div><div class="span1">
+                    <span> Price = {{ x.order_price}}</span>
+                </div>
+                <div class="span1">
+                    <span> Quantity = {{ x.order_qty}}</span>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="span1">
+                    <span>{{ x.order_amount}}</span>
+                </div>
+                <br>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div> 
+{% endblock %}

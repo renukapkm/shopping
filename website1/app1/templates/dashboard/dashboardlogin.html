@@ -1,0 +1,41 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+login page
+{% endblock %}
+{% block content %}
+
+
+
+<section class="dashlog ">
+    <div class="container mt-3">
+      <h2 class="text-center text-warning">ADMINISTRATION LOGIN</h2>
+      <div class="row ">
+        <div class="col-lg-6 col-md-6 col-sm-6 mx-auto ">
+        <form action="/dashboardlogin" method="post" class="mt-5">
+          {% csrf_token %}
+        
+          <div class="input-container mt-2">
+            <i class="fa fa-user "></i>
+           
+            <input class="input-field" type="text" placeholder="Username" name="log_user">
+          </div>
+          <div class="input-container mt-2 ">
+            <i class="fa fa-key "></i> 
+            <input class="input-field" type="password" placeholder="Password" name="log_passwd">
+          </div>
+          <button type="submit" class="btnclr mt-2">Login</button>
+    
+    
+    </form>
+    </div>
+    
+    </div>
+    
+    </div>
+    </section>
+    
+    
+    
+    {% endblock %} 

@@ -1,0 +1,59 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+product list page
+{% endblock %}
+{% block content %}
+<section>
+    <div class="container">
+        <h1 class="demo text-center" >product list</h1>
+        <div class="row">
+            <div class="col-7  mx-auto ">
+                <div class="add">
+
+        
+
+<table class="table  table-bordered  align-middle text-center  ">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>cate name</th>
+            <th>image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x,y in ap %}
+        <tr>
+            <td>{{x.pro_name}}</td>
+            <td>{{x.pro_price}}</td>
+            <td>{{y}}</td>
+            <td><img class="" src="/media/{{x.pro_image}}" alt="Card image"   height="100px"></td>
+            
+            <td class="w-25">
+                <a href="/edit/{{x.id}}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                <a href="/adminproducts?del={{x.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+
+            </td>
+             
+             
+        </tr>
+        
+        {% endfor %}
+       
+    </tbody>
+</table>
+       </div>
+    </div>
+   </div>
+</div>
+</section>
+
+<!-- <div class="container">
+    <div class="center">
+      <button >Update</button>
+    </div>
+  </div> -->
+{% endblock %}

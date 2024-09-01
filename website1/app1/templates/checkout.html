@@ -1,0 +1,68 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %} checkout page {% endblock %}
+{% block content %}
+<h2>checkout</h2><br><br>
+<div class="conaineer">
+    <div class="row">
+        <div class="col-sm-9">
+            {% for x in order %}
+            <div class="row my-2" style="background-color: rgb(255, 255, 255,0.2);">
+                <div class="col-sm-4">
+                    <div class="inbox1">
+                        <img src="/media/{{x.order_image}}" alt="" height="100px">
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="span1">
+                        <span>{{x.order_name}}</span>
+                    </div>
+                    <div class="span1">
+                        <span>price = {{x.order_price}}</span>
+                    </div>
+                    <div class="span1">
+                        <span> quanty = {{x.order_qty}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="span1">
+                        <span>{{x.order_amount}}</span>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm-3">
+            <div style="background-color: lightgray;min-height: 300px;padding: 15px;">
+                {% if co == 0 %}
+                <!-- add address -->
+                <form action="/checkout" method="POST">
+                    {% csrf_token %}
+                    <label for="">Enter address:</label>
+                    <textarea name="dlv_adrs" id="" style="width: 100%; height: 100px;"></textarea>
+                    <label for="">Choose Delivery type</label>
+                    <select name="dlv_type" id="">
+                        <option value="cod">COD</option>
+                        <option value="online">online</option>
+
+                    </select>
+                    <button class="btn btn-success mt-3">submit</button>
+                </form>
+                {% elif co == 1 %}
+                   Total amount : {{tot}}
+                   <br><br>
+                   shipping  : {{shp}}
+                   <br><br>
+                   GST : {{gst}}
+                   <br><br>
+                <a href="/confirmorder">
+                    <button  class="btn btn-success">confirmorder</button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

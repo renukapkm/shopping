@@ -1,0 +1,46 @@
+{% extends 'dashboard/dashboardmaster.html' %}
+{% load static %}
+
+{% block title %}
+categarys page
+{% endblock %}
+{% block content %}
+<section class="admincate">
+    <div class="container">
+        <h1 class="demo mx-auto">ADMIN CATEGORY</h1>
+        <div class="row">
+            <div class="col">
+                <div class="category">
+
+         
+
+<table class="table align-middle text-center table-bordered  w-50   mx-auto">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>image</th>
+            <th>Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in admincate %}
+        <tr>
+            <td>{{x.cate_name }}</td>
+            <td>  <img  src="/media/{{x.cate_image}}" alt="Card image" style="height: 100px;">
+            </td>
+           <td> 
+            <a href="/editcategary/{{x.id}}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+            <a href="/admincategary?del={{x.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+        </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
